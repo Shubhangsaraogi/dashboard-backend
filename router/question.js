@@ -11,7 +11,7 @@ const { exists } = require('../models/Job');
 router.get('/fetchquestion', fetch_id, async (req, res) => {
   res.set({
     'Content-Type':'application/json',
-    'Access-Control-Allow-Origin':'https://notes-app.000.pe',
+    'Access-Control-Allow-Origin':'https://notes-app.000.pe/',
     'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
   })
   try {

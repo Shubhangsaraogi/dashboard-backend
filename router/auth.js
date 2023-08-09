@@ -13,7 +13,7 @@ router.post('/createuser', [
 ], async (req, res) => {
   res.set({
     'Content-Type':'application/json',
-    'Access-Control-Allow-Origin':'https://notes-app.000.pe',
+    'Access-Control-Allow-Origin':'https://notes-app.000.pe/',
     'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
   })
   let success = false;
@@ -57,7 +57,7 @@ router.post('/login', [
 ], async (req, res) => {
   res.set({
     'Content-Type':'application/json',
-    'Access-Control-Allow-Origin':'https://notes-app.000.pe',
+    'Access-Control-Allow-Origin':'https://notes-app.000.pe/',
     'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
   });
   let success = false;
@@ -98,7 +98,7 @@ router.post('/login', [
 router.post('/getuser', fetch_id, async (req, res) => {
   res.set({
     'Content-Type':'application/json',
-    'Access-Control-Allow-Origin':'https://notes-app.000.pe',
+    'Access-Control-Allow-Origin':'https://notes-app.000.pe/',
     'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
   });
   let success = false;

@@ -36,7 +36,7 @@ router.post('/createuser', [
     }
     var authToken = jwt.sign(data, process.env.JWT_SECRET);
     success = true;
-    res.status(200).send({ success, email: req.body.email, authToken });
+    res.status(200).JSON.parse({ success, email: req.body.email, authToken });
   }
   catch (error) {
     console.error(error.message);
@@ -74,7 +74,7 @@ router.post('/login', [
     }
     var authToken = jwt.sign(data, process.env.JWT_SECRET);
     success = true;
-    res.status(200).send({ success, email: req.body.email, authToken });
+    res.status(200).JSON.parse({ success, email: req.body.email, authToken });
 
   }
   catch (error) {

@@ -2,18 +2,20 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const router = express.Router();
-const { body, validationResult, header } = require('express-validator');
+const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const fetch_id = require('../middleware/fetch_id');
 // route 1 to signup the user
-const headers = {'Content-Type':'application/json',
-                    'Access-Control-Allow-Origin':'*',
-                    'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'}
 router.post('/createuser', [
   body('name', 'Enter a valid String').isLength({ min: 3 }),
   body('email', 'Enter a valid email').isEmail(),
   body('password', 'Password must be atleast 5 characters').isLength({ min: 5 }),
 ], async (req, res) => {
+  res.set({
+    'Content-Type':'application/json',
+    'Access-Control-Allow-Origin':'*',
+    'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
+  })
   let success = false;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -39,7 +41,7 @@ router.post('/createuser', [
     }
     var authToken = jwt.sign(data, process.env.JWT_SECRET);
     success = true;
-    res.status(200).header(headers).json({ success, email: req.body.email, authToken });
+    res.status(200).json({ success, email: req.body.email, authToken });
   }
   catch (error) {
     console.error(error.message);
@@ -53,6 +55,11 @@ router.post('/login', [
   body('email', 'Enter a valid email').isEmail(),
   body('password', 'Password cannot be empty').exists()
 ], async (req, res) => {
+  res.set({
+    'Content-Type':'application/json',
+    'Access-Control-Allow-Origin':'*',
+    'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
+  });
   let success = false;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -77,7 +84,7 @@ router.post('/login', [
     }
     var authToken = jwt.sign(data, process.env.JWT_SECRET);
     success = true;
-    res.status(200).header(headers).json({ success, email: req.body.email, authToken });
+    res.status(200).json({ success, email: req.body.email, authToken });
 
   }
   catch (error) {
@@ -89,6 +96,11 @@ router.post('/login', [
 
 // Route 3 to fetch the user
 router.post('/getuser', fetch_id, async (req, res) => {
+  res.set({
+    'Content-Type':'application/json',
+    'Access-Control-Allow-Origin':'*',
+    'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
+  });
   let success = false;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {

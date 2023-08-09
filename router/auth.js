@@ -21,7 +21,7 @@ router.post('/createuser', [
     if (user) {
       return res.status(400).json({ success, error: "User already exist with this email" });
     }
-    console.log(user);
+    // console.log(user);
     const salt = await bcrypt.genSalt(10);
     secPass = await bcrypt.hash(req.body.password, salt)
       user = await User.create({
@@ -36,7 +36,7 @@ router.post('/createuser', [
     }
     var authToken = jwt.sign(data, process.env.JWT_SECRET);
     success = true;
-    res.status(200).JSON.parse({ success, email: req.body.email, authToken });
+    res.status(200).json({ success, email: req.body.email, authToken });
   }
   catch (error) {
     console.error(error.message);
@@ -62,7 +62,7 @@ router.post('/login', [
     if (!user) {
       return res.status(400).json({ success, error: "Please Login with correct credentials" });
     }
-    console.log(user);
+    // console.log(user);
     const passwordCompare =await bcrypt.compare(password, user.password);
 
     if (!passwordCompare){
@@ -74,7 +74,7 @@ router.post('/login', [
     }
     var authToken = jwt.sign(data, process.env.JWT_SECRET);
     success = true;
-    res.status(200).JSON.parse({ success, email: req.body.email, authToken });
+    res.status(200).json({ success, email: req.body.email, authToken });
 
   }
   catch (error) {

@@ -6,7 +6,7 @@ connectToMongo();
 const app = express();
 const port = 5000;
 
-app.use(cors({ origin:'https://notes-app.000.pe' , credentials :  true}));
+app.use(cors({ origin:'https://notes-app.000.pe/' , credentials :  true}));
 app.use(express.json());
 
 app.use('/api/storedata',require('./router/storedata'));

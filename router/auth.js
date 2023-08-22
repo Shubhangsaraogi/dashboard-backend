@@ -11,11 +11,7 @@ router.post('/createuser', [
   body('email', 'Enter a valid email').isEmail(),
   body('password', 'Password must be atleast 5 characters').isLength({ min: 5 }),
 ], async (req, res) => {
-  res.set({
-    'Content-Type':'application/json',
-    'Access-Control-Allow-Origin':'https://notes-app.000.pe',
-    'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
-  })
+
   let success = false;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -55,11 +51,7 @@ router.post('/login', [
   body('email', 'Enter a valid email').isEmail(),
   body('password', 'Password cannot be empty').exists()
 ], async (req, res) => {
-  res.set({
-    'Content-Type':'application/json',
-    'Access-Control-Allow-Origin':'https://notes-app.000.pe',
-    'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
-  });
+
   let success = false;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -96,11 +88,7 @@ router.post('/login', [
 
 // Route 3 to fetch the user
 router.post('/getuser', fetch_id, async (req, res) => {
-  res.set({
-    'Content-Type':'application/json',
-    'Access-Control-Allow-Origin':'https://notes-app.000.pe',
-    'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
-  });
+
   let success = false;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {

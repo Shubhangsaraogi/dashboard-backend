@@ -9,11 +9,11 @@ const fetch_id = require('../middleware/fetch_id');
 const { exists } = require('../models/Job');
 // Route 3 to fetch the user
 router.get('/fetchquestion', fetch_id, async (req, res) => {
-  res.set({
-    'Content-Type':'application/json',
-    'Access-Control-Allow-Origin':'https://notes-app.000.pe/',
-    'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
-  })
+  // res.set({
+  //   'Content-Type':'application/json',
+  //   'Access-Control-Allow-Origin':'https://notes-app.000.pe/',
+  //   'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
+  // })
   try {
     const userId = req.user;
     let user = await User.findById(userId).select("-password");

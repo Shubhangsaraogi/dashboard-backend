@@ -42,13 +42,8 @@ router.post('/addquestion', fetch_id, [
     let user = await User.findById(userId).select("-password");
     if (user.role === "admin") {
       const { title, description } = req.body;
-      uniqueQ = await Question.find({ title: { $regex: title } });
-      if (!uniqueQ[0]) {
         const question = await new Question({ title, description, adminId: userId }).save();
         res.json(question);
-      }
-      else
-        return res.status(400).json({ error: "Question is already added" });
     }
     else
       return res.status(400).json({ error: "Only admin can add the question" });

@@ -6,7 +6,7 @@ connectToMongo();
 const app = express();
 const port = 5000;
 
-app.use(cors({origin:'http://localhost:3000'}));
+app.use(cors({origin:'https://shubhang-dashboard.vercel.app'}));
 app.use(express.json());
 // app.use('/',(req,res)=>{
 //   res.json({"message":"hello there this is notes backend server"});

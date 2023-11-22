@@ -55,6 +55,7 @@ router.post('/signup', [
   body('email', 'Enter a valid email').isEmail(),
 ], async (req, res) => {
 
+  
   let success = false;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
